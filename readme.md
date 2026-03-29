@@ -131,11 +131,6 @@ v4l2-ctl
 - ElaWidgetTools（仓库地址：https://github.com/Liniyous/ElaWidgetTools ）
 - FFmpeg OpenSSL
 - 安装命令：
-<<<<<<< HEAD
-
-=======
--->
->>>>>>> 2c594699d1c8dd4084c939664ad1096f7cce8e30
 ### 2.1 安装依赖
 
 1. 更新源：
@@ -307,8 +302,4 @@ v4l2-ctl
 4. **完备的 HID 协议实现**：
 * 不仅支持普通键鼠，还完整实现了绝对坐标映射（解决鼠标漂移问题）和触摸屏模式的长按右键逻辑。
 
-<<<<<<< HEAD
 -->
-=======
-
->>>>>>> 2c594699d1c8dd4084c939664ad1096f7cce8e30
