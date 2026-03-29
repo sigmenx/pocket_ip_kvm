@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Pocket-KVM
 
 一个基于 Qt/C++ 开发的高性能嵌入式 **IP-KVM (Keyboard, Video, Mouse)** 解决方案。该项目运行在 Linux 平台上，通过 V4L2 采集 HDMI 视频信号，经过 H.264 编码后通过 WebSocket 推流到 Web 端，同时支持本地和远程的键鼠控制 (HID) ，通过 CH9329 硬件模拟器发送给被控端。
@@ -124,28 +123,6 @@ v4l2-ctl
 ![软件示意图](imgs/fig03.png)
 
 等待更新
-=======
-# PADSKVM
-
-一个基于 Qt/C++ 开发的高性能嵌入式 **IP-KVM (Keyboard, Video, Mouse)** 解决方案。该项目运行在 Linux 平台上，通过 V4L2 采集 HDMI 视频信号，经过 H.264 编码后通过 WebSocket 推流到 Web 端，同时支持本地和远程的键鼠控制 (HID) ，通过 CH9329 硬件模拟器发送给被控端。
-
-视频链接：https://b23.tv/mAZ4r91
-
-![软件示意图](imgs/fig01.png)
-
-## 一、硬件说明
-
-使用RK3566泰山派 + TC358743(HDMI-MIPICSI)模块 + CH9329(串口-HID)模块,连接如下：
-
-![连线示意图](imgs/fig02.jpg)
-
-<!--https://github.com/user-attachments/assets/be0b6e8c-1b00-4550-8f39-513f3b976266-->
-
-## 二、编译与运行
-
-本软件在UBUNTU22(内核5.10)上编译。使用的系统为:
-https://github.com/CmST0us/tspi-linux-sdk.
->>>>>>> 2c594699d1c8dd4084c939664ad1096f7cce8e30
 
 <!--
 - Qt 5.15.3（图形界面开发框架）
