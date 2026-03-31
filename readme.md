@@ -72,7 +72,48 @@ https://github.com/CmST0us/tspi-linux-sdk
 	pinctrl-0 = <&uart0_xfer>;
     };
    ```
- 
+4. **设置总设备树**
+
+   在 `tspi-linux-sdk/kernelarch/arm64/boot/dts/rockchip/tspi-rk3566-user-v10-linux.dts` 中打开CSI，DSI，关闭HDMI：
+
+   ```config
+    //#include "tspi-rk3566-edp-v10.dtsi"
+    #include "tspi-rk3566-dsi-v10.dtsi"
+    //#include "tspi-rk3566-hdmi-v10.dtsi"
+    #include "tspi-rk3566-csi-v10.dtsi"
+   ```
+5. **修改DDR频率**
+
+
+   在 `tspi-linux-sdk/kernelarch/arm64/boot/dts/rockchip/tspi-rk3566-core-v10.dtsi` 中替换dmc节点：
+   ```config
+    &dmc {
+    	center-supply = <&vdd_logic>;
+        status = "okay";
+
+        /* 1. 修正自动最低频率，单位是 KHz */
+        auto-min-freq = <528000>;
+        /* 2. 修改 VOP 带宽表的底座，让它空闲时也不许低于 528MHz */
+        vop-bw-dmc-freq = <
+        /* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
+	    0   286     528000  /* 把原来的 324000 改成 528000 */
+	    287 99999   528000
+        >;
+        /* 3. 修改 VOP 帧带宽表的底座 */
+        vop-frame-bw-dmc-freq = <
+        /* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
+	    0   620     528000  /* 把原来的 324000 改成 528000 */
+	    621 99999   780000
+        >;
+        /* 4. 修改 CPU 带宽表的底座 */
+        cpu-bw-dmc-freq = <
+        /* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
+	    0   350     528000  /* 把原来的 324000 改成 528000 */
+	    351 400     528000
+	    401 99999   780000
+        >;
+   ```
+};
 ### 2.2 增加触摸驱动（`my_sec_ts`）
 
 1. 复制驱动目录：
@@ -109,8 +150,11 @@ https://github.com/CmST0us/tspi-linux-sdk
 
 ```bash
 cd tspi-linux-sdk
-sudo ./build.sh kernel
-sudo ./rkflash.sh boot
+./build.sh init
+# 选4 tspi-rk3566-ubuntu-panfrost_defconfig
+./build.sh kernel
+#插上泰山派
+./rkflash.sh boot
 ```
 
 
@@ -125,7 +169,7 @@ sudo ./rkflash.sh boot
 3. 串口一般不会出现问题。
 3. TC358743 初始化成功判定：
 
-   注意，仅出现下述情景才代表TC358743初始化成功：
+   注意，当且仅当出现下述情景才代表TC358743初始化成功：
    ```bash
     root@neonsboard: dmesg | grep tc358
     [    5.141057] tc35874x 4-000f: driver version: 00.01.01

@@ -67,108 +67,108 @@
 &csi2_dphy1 {
 	status = "disabled";
 
-	/*
-	 * dphy1 only used for split mode,
-	 * can be used  concurrently  with dphy2
-	 * full mode and split mode are mutually exclusive
-	 */
-	ports {
-		#address-cells = <1>;
-		#size-cells = <0>;
+	// /*
+	//  * dphy1 only used for split mode,
+	//  * can be used  concurrently  with dphy2
+	//  * full mode and split mode are mutually exclusive
+	//  */
+	// ports {
+	// 	#address-cells = <1>;
+	// 	#size-cells = <0>;
 
-		port@0 {
-			reg = <0>;
-			#address-cells = <1>;
-			#size-cells = <0>;
+	// 	port@0 {
+	// 		reg = <0>;
+	// 		#address-cells = <1>;
+	// 		#size-cells = <0>;
 
-			dphy1_in: endpoint@1 {
-				reg = <1>;
-				//remote-endpoint = <&ov5695_out>;
-				data-lanes = <1 2>;
-			};
-		};
+	// 		dphy1_in: endpoint@1 {
+	// 			reg = <1>;
+	// 			//remote-endpoint = <&ov5695_out>;
+	// 			data-lanes = <1 2>;
+	// 		};
+	// 	};
 
-		port@1 {
-			reg = <1>;
-			#address-cells = <1>;
-			#size-cells = <0>;
+	// 	port@1 {
+	// 		reg = <1>;
+	// 		#address-cells = <1>;
+	// 		#size-cells = <0>;
 
-			dphy1_out: endpoint@1 {
-				reg = <1>;
-				remote-endpoint = <&isp0_in>;
-			};
-		};
-	};
+	// 		dphy1_out: endpoint@1 {
+	// 			reg = <1>;
+	// 			remote-endpoint = <&isp0_in>;
+	// 		};
+	// 	};
+	// };
 };
 //摄像头D-PHY接口
 &csi2_dphy2 {
 	status = "disabled";
 
-	/*
-	 * dphy2 only used for split mode,
-	 * can be used  concurrently  with dphy1
-	 * full mode and split mode are mutually exclusive
-	 */
-	ports {
-		#address-cells = <1>;
-		#size-cells = <0>;
+	// /*
+	//  * dphy2 only used for split mode,
+	//  * can be used  concurrently  with dphy1
+	//  * full mode and split mode are mutually exclusive
+	//  */
+	// ports {
+	// 	#address-cells = <1>;
+	// 	#size-cells = <0>;
 
-		port@0 {
-			reg = <0>;
-			#address-cells = <1>;
-			#size-cells = <0>;
+	// 	port@0 {
+	// 		reg = <0>;
+	// 		#address-cells = <1>;
+	// 		#size-cells = <0>;
 
-			dphy2_in: endpoint@1 {
-				reg = <1>;
-				//remote-endpoint = <&gc5025_out>;
-				data-lanes = <1 2>;
-			};
-		};
+	// 		dphy2_in: endpoint@1 {
+	// 			reg = <1>;
+	// 			//remote-endpoint = <&gc5025_out>;
+	// 			data-lanes = <1 2>;
+	// 		};
+	// 	};
 
-		port@1 {
-			reg = <1>;
-			#address-cells = <1>;
-			#size-cells = <0>;
+	// 	port@1 {
+	// 		reg = <1>;
+	// 		#address-cells = <1>;
+	// 		#size-cells = <0>;
 
-			dphy2_out: endpoint@1 {
-				reg = <1>;
-				remote-endpoint = <&mipi_csi2_input>;
-			};
-		};
-	};
+	// 		dphy2_out: endpoint@1 {
+	// 			reg = <1>;
+	// 			remote-endpoint = <&mipi_csi2_input>;
+	// 		};
+	// 	};
+	// };
 };
 
 &mipi_csi2 {
 	status = "disabled";
 
-	ports {
-		#address-cells = <1>;
-		#size-cells = <0>;
+	// ports {
+	// 	#address-cells = <1>;
+	// 	#size-cells = <0>;
 
-		port@0 {
-			reg = <0>;
-			#address-cells = <1>;
-			#size-cells = <0>;
+	// 	port@0 {
+	// 		reg = <0>;
+	// 		#address-cells = <1>;
+	// 		#size-cells = <0>;
 
-			mipi_csi2_input: endpoint@1 {
-				reg = <1>;
-				remote-endpoint = <&dphy2_out>;
-				data-lanes = <1 2>;
-			};
-		};
+	// 		mipi_csi2_input: endpoint@1 {
+	// 			reg = <1>;
+	// 			remote-endpoint = <&dphy2_out>;
+	// 			data-lanes = <1 2>;
+	// 		};
+	// 	};
 
-		port@1 {
-			reg = <1>;
-			#address-cells = <1>;
-			#size-cells = <0>;
+	// 	port@1 {
+	// 		reg = <1>;
+	// 		#address-cells = <1>;
+	// 		#size-cells = <0>;
 
-			mipi_csi2_output: endpoint@0 {
-				reg = <0>;
-				remote-endpoint = <&cif_mipi_in>;
-				data-lanes = <1 2>;
-			};
-		};
-	};
+	// 		mipi_csi2_output: endpoint@0 {
+	// 			reg = <0>;
+	// 			remote-endpoint = <&cif_mipi_in>;
+	// 			data-lanes = <1 2>;
+	// 		};
+	// 	};
+	// };
 };
 
 //Rockchip Camera Interface
@@ -180,27 +180,27 @@
 &rkcif_dvp {
 	status = "disabled";
 
-	port {
-		/* Parallel bus endpoint */
-		dvp_in_bcam: endpoint {
-			// remote-endpoint = <&gc2145_out>;
-			bus-width = <8>;
-			vsync-active = <0>;
-			hsync-active = <1>;
-		};
-	};
+	// port {
+	// 	/* Parallel bus endpoint */
+	// 	dvp_in_bcam: endpoint {
+	// 		// remote-endpoint = <&gc2145_out>;
+	// 		bus-width = <8>;
+	// 		vsync-active = <0>;
+	// 		hsync-active = <1>;
+	// 	};
+	// };
 };
 
 //LVDS接口摄像头
 &rkcif_mipi_lvds {
 	status = "disabled";
 
-	port {
-		cif_mipi_in: endpoint {
-			remote-endpoint = <&mipi_csi2_output>;
-			data-lanes = <1 2>;
-		};
-	};
+	// port {
+	// 	cif_mipi_in: endpoint {
+	// 		remote-endpoint = <&mipi_csi2_output>;
+	// 		data-lanes = <1 2>;
+	// 	};
+	// };
 };
 
 //摄像头内存管理
@@ -247,21 +247,22 @@
 &i2c4 {
 	/* i2c4 sda conflict with camera pwdn */
 	status = "okay";
-	// 	//ADD///
+	////ADD///
 	clock-frequency = <400000>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c4m0_xfer>;
-	// /////
+	//////////
 	tc358743: tc358743@f {
 		status = "okay";
 		compatible = "toshiba,tc358743";
 		reg = <0x0f>;
-		pinctrl-0 = <&cif_clk &tc358743_power_gpio &tc358743_int_gpio>;
+		//pinctrl-0 = <&cif_clk &tc358743_power_gpio &tc358743_int_gpio>;
+		pinctrl-0 = <&tc358743_int_gpio>;
 
 		clocks = <&tc358743_refclk>;
 		clock-names = "refclk";
 		
-        reset-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
+        //reset-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
 
 		interrupt-parent = <&gpio4>;
 		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
@@ -289,8 +290,8 @@
 			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
 		};
 
-		tc358743_power_gpio: tc358743-power-gpio {
-			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
-		};
+		//tc358743_power_gpio: tc358743-power-gpio {
+		//	rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+		//};
 	};
 };

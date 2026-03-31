@@ -34,7 +34,7 @@
 			  100 101 102 103 104 105 106 107 108 109
 			  110 111 112 113 114 115 116 117 118 119
  			  120 121 122 123 124 125 126 127 128 
-			  128 128 256
+			  128 128 255
         >;
         default-brightness-level = <50>;
     };
@@ -78,14 +78,16 @@
     };
 };
 
-/* --- 视频路径配置 --- */
-&dsi1_in_vp0 { status = "disabled"; };
-&dsi1_in_vp1 { status = "okay"; };
+/* --- 视频路径配置 --- */  
+//注意：此处使用 vp0 输出dsi1 若用vp1则需打开hdmi的vp0 否则会出现奇怪问题
+&dsi1 {status = "okay";};
+&dsi1_in_vp0 { status = "okay"; };
+&dsi1_in_vp1 { status = "disabled"; };
 &video_phy1  { status = "okay"; };
 
 &route_dsi1 {
     status = "okay";
-    connect = <&vp1_out_dsi1>;
+    connect = <&vp0_out_dsi1>;
 };
 
 /* --- MIPI DSI 显示配置 --- */
